@@ -26,3 +26,6 @@ class Length(enum.Enum):
     GALLON = 3.78
     LITRE = 1
     ML = 0.001
+    KG = 1.0
+    GRAMS = 0.001
+    TONNE = 1000
