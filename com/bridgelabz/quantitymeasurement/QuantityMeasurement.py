@@ -15,6 +15,20 @@ class QuantityMeasurement:
     def convert(self, length):
         return self.unit * length
 
+    def converttemperature(self, temp):
+
+        if temp == Length.CELSIUS:
+            return (temp * 9 / 5) + 32
+        elif temp == Length.FAHRENHEIT:
+            return temp * self.unit / 212
+        return False
+
+    def compareTemperatures(self, other):
+
+        if isinstance(self.unit, Length) and isinstance(other.unit, Length):
+            return Length.converttemperature(self.unit, self.value) == Length.converttemperature(other.unit, other.value)
+        return False
+
     def addition(self, other):
         return Length.convert(self.unit, self.length) + Length.convert(other.unit, other.length)
 
@@ -29,3 +43,5 @@ class Length(enum.Enum):
     KG = 1.0
     GRAMS = 0.001
     TONNE = 1000
+    FAHRENHEIT = 212
+    CELSIUS = 100
