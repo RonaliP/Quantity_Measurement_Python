@@ -163,4 +163,18 @@ def test_TwoInchAnd_FiveCM_IfCompared_ShouldReturnTrue():
         assert first_inch == second_cm
 
 #_________________________________________________________________________
+#UC4-Addition of
+# 2inch+2inch=4inch
+#1 ft+2inch=14 inch
+#1 ft+1 ft=24 inch
+#2inch+2.5 cm=3 inch
 
+@pytest.mark.parametrize("first_length, second_length,expected",
+                         [
+                             (QuantityMeasurement(Length.INCH, 2.0), QuantityMeasurement(Length.INCH, 2.0), 4.0),
+                             (QuantityMeasurement(Length.FEET, 1.0), QuantityMeasurement(Length.INCH, 2.0), 14.0),
+                             (QuantityMeasurement(Length.FEET, 1.0), QuantityMeasurement(Length.FEET, 1.0), 24.0),
+                             (QuantityMeasurement(Length.INCH, 2.0), QuantityMeasurement(Length.CM, 2.5), 3.0),
+                         ])
+def test_TwoLengths_UnitValue_Added_ReturnExpectedResult(first_length, second_length, expected):
+    assert QuantityMeasurement.addition(first_length, second_length) == expected
