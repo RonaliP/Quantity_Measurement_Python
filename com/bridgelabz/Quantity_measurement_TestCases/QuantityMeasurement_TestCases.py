@@ -233,4 +233,13 @@ def test_Onetonne_IfCompared_1000gms_ReturnTrue():
         assert QuantityMeasurement.addition(first_weight, second_weight) == expected
 
 #________-------------------------------------------------------------------------------------------
-#
+#UC8-
+#212 F=100c
+
+@pytest.mark.parametrize("first_temp, second_temp, expected",
+                         [
+                             (QuantityMeasurement(Length.FAHRENHEIT, 212), QuantityMeasurement(Length.CELSIUS, 100), True),
+                             (QuantityMeasurement(Length.CELSIUS, 100), QuantityMeasurement(Length.FAHRENHEIT, 212), True)
+                         ])
+def test_GivenOneFahAndOneCelsius_WhenCompare_ShouldReturnTrue(first_temp, second_temp, expected):
+    assert QuantityMeasurement.compareTemperatures(first_temp, second_temp) == expected
