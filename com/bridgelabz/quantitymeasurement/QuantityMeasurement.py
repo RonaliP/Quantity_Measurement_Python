@@ -15,6 +15,9 @@ class QuantityMeasurement:
     def convert(self, length):
         return self.unit * length
 
+    def addition(self, other):
+        return Length.convert(self.unit, self.length) + Length.convert(other.unit, other.length)
+
 class Length(enum.Enum):
     INCH = 1.0
     FEET = 12.0
