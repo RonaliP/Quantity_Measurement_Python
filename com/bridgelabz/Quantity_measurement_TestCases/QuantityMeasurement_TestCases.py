@@ -200,8 +200,37 @@ def test_Onelitres_1000ml_IfCompared_ReturnTrue():
 #UC6-Addition of above units
 @pytest.mark.parametrize("first_length, second_length,expected",
                          [
-                             (QuantityMeasurement(Length.GALLON, 1.0), QuantityMeasurement(Length.LITRE, 3.78), 7.56),
+                             (QuantityMeasurement(Length.GALLON, 1.0), QuantityMeasurement(Length.LITRE, 3.78), 7.57),
                              (QuantityMeasurement(Length.LITRE, 1.0), QuantityMeasurement(Length.ML, 1000), 2.0),
                          ])
 def test_TwoLengthsUnitValue_IfAdded_ReturnExpectedResult1(first_length, second_length, expected):
     assert QuantityMeasurement.addition(first_length, second_length) == expected
+
+
+#_______________________________________________________________________________________________________
+#UC7-
+#1 kg=1000 gms
+#1 tonne=1000 kgs
+#1 tonne+1000 gms= 1001 kgs
+
+def test_Onekg_IfCompared_1000gms_ShouldReturnTrue():
+    First_kg=QuantityMeasurement(Length.KG,1)
+    Second_grams=QuantityMeasurement(Length.GRAMS,1000)
+
+    assert First_kg==Second_grams
+
+def test_Onetonne_IfCompared_1000gms_ReturnTrue():
+    First_tonne= QuantityMeasurement(Length.TONNE, 1)
+    Second_grams = QuantityMeasurement(Length.GRAMS, 1000)
+    assert First_tonne == Second_grams
+
+
+    @pytest.mark.parametrize("first_weight, second_weight,expected",
+                             [
+                                 (QuantityMeasurement(Length.TONNE, 1.0), QuantityMeasurement(Length.GRAMS, 1000), 1001)
+                             ])
+    def test_givenTwoWeightValue_WhenAdd_ShouldReturnExpectedResult1(first_weight, second_weight, expected):
+        assert QuantityMeasurement.addition(first_weight, second_weight) == expected
+
+#________-------------------------------------------------------------------------------------------
+#
