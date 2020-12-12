@@ -178,3 +178,21 @@ def test_TwoInchAnd_FiveCM_IfCompared_ShouldReturnTrue():
                          ])
 def test_TwoLengths_UnitValue_Added_ReturnExpectedResult(first_length, second_length, expected):
     assert QuantityMeasurement.addition(first_length, second_length) == expected
+
+
+#______________________________________________________________________________________________________
+#UC5-Compare volumes in litres and gallon
+# 1 gallon=3.78 litres
+#1 litres=1000 ml
+
+def test_OneGallon_Litres_IfCompared_ShouldReturnTrue():
+    First_Gallon=QuantityMeasurement(Length.GALLON,1)
+    Second_Litre=QuantityMeasurement(Length.LITRE,3.78)
+
+    assert First_Gallon==Second_Litre
+
+def test_Onelitres_1000ml_IfCompared_ReturnTrue():
+    First_Litre= QuantityMeasurement(Length.LITRE, 1)
+    Second_ML = QuantityMeasurement(Length.ML, 1000)
+    assert First_Litre == Second_ML
+
