@@ -23,4 +23,6 @@ class Length(enum.Enum):
     FEET = 12.0
     YARD = 36.0
     CM=0.4
-
+    GALLON = 3.78
+    LITRE = 1
+    ML = 0.001
