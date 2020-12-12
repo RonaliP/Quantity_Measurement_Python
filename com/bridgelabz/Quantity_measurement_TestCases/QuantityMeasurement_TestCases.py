@@ -153,3 +153,14 @@ def test_OneYardAnd_36InchValue_WhenCompared_ReturnTrue():
         assert first_yard == second_inch
 
 #___________________________________________________________________________
+
+#UC3-Testcase-2inch=5cm
+
+def test_TwoInchAnd_FiveCM_IfCompared_ShouldReturnTrue():
+    first_inch = QuantityMeasurement(Length.INCH, 2.0)
+    second_cm = QuantityMeasurement(Length.CM, 5.0)
+    with pytest.raises(AssertionError):
+        assert first_inch == second_cm
+
+#_________________________________________________________________________
+
